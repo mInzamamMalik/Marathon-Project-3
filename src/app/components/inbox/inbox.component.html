@@ -16,6 +16,6 @@
     <div>
         <p><b> {{ (item.from == resObject.$key )? resObject.name : "Me" }}</b></p>
         <p> {{item.text}}</p>
-        {{item | json}}
+        <img [src]="item.image" alt="">
     </div>
 </div>

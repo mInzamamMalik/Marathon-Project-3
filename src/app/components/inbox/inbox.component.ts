@@ -53,7 +53,8 @@ export class InboxComponent implements OnInit {
         text: "",
         from: "",
         to: "",
-        timeStamp: this.fs.getDate()
+        timeStamp: this.fs.getDate(),
+        image: ""
     }
 
 
@@ -65,10 +66,21 @@ export class InboxComponent implements OnInit {
 
         this.input = "";
     }
-    
-    
+
+
     uploadImageToFirebase(event) {
-        var filename = event.target.files[0];
-        this.fs.uploadImage(filename);        
+        let filename = event.target.files[0];
+        this.fs.uploadImage(filename)
+            .then(url => {
+                console.log("image url after = " + url);
+
+                this.newMessage.image = url.toString();
+
+                this.fs.pushData("inbox/" + this.recipientUid + "/" + this.myUid, this.newMessage)
+                this.fs.pushData("inbox/" + this.myUid + "/" + this.recipientUid, this.newMessage)
+
+                this.newMessage.image = "";
+            });;
+
     };
 }

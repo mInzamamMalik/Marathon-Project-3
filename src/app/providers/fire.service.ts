@@ -12,22 +12,22 @@ export class FireService {
     constructor(private af: AngularFire, private router: Router) {
         console.log("Fire Service initialized");
 
-        this.storageRef = firebase.storage().ref().child("images");
-
+        this.storageRef = firebase.storage().ref().child("images/");
     }
 
     uploadImage(file) {
-        console.log("base 64 data: ", file);
-
-        this.storageRef.put(file)
-            .then((snapshot) => {
-                console.log("image uplad ", snapshot.downloadURL);
-                this.storageRef.getDownloadURL()
-                    .then(url => {
-                        console.log("image url after = " + url);
-
-                    });
-            })
+        return new Promise((resolve, reject) => {
+            console.log("base 64 data: ", file);
+            this.storageRef.put(file)
+                .then((snapshot) => {
+                    console.log("image uplad ", snapshot.downloadURL);
+                    this.storageRef.getDownloadURL()
+                        .then(url => {
+                            console.log("image url after = " + url);
+                            resolve(url);
+                        });
+                })
+        });
     }
 
     //     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
