@@ -1,3 +1,19 @@
 <p>
-  signup works!
+    signup:
 </p>
+<form action="" (submit)="signup()">
+
+    <label for="">Name:</label> <br/>
+    <input (input)="data.name=$event.target.value" required /> <br/>
+
+    <label for="">Email:</label> <br/>
+    <input (input)="data.email=$event.target.value" type="email" required /> <br/>
+
+    <label for="">Password:</label> <br/>
+    <input (input)="data.password=$event.target.value" type="password" required /> <br/>
+
+    <button type="submit">Signup</button>
+
+    <p>Already have an account?
+        <a routerLink="/login" routerLinkActive="active">Back to Login</a></p>
+</form>

@@ -1,15 +1,49 @@
 import { Component, OnInit } from '@angular/core';
+import { FireService } from '../../providers/fire.service';
+import { PreloadingStrategy, Route, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+    constructor(private fs: FireService, private router: Router) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    } 
+    data = {
+        email: "",
+        password: "",
+    }
 
+    // login() {
+    //     console.log(this.data);
+    //     this.fs.doLogin(this.data.email, this.data.password)
+    //         .catch((error: any) => {
+    //             alert(error.code);
+    //             console.log(error);
+    //         })
+    //         .then((user) => {
+    //             console.log("user: ", user);
+    //             if (user)
+    //                 this.fs.getData("users/" + user.uid)
+    //                     .take(1)
+    //                     .subscribe(userData => {
+    //                         console.log("user data: ", userData);
+
+    //                         switch (userData.role) {
+    //                             case "admin":
+    //                                 this.router.navigate(['/admin/dashboard']);
+    //                                 break;
+    //                             case "user":
+    //                                 this.router.navigate(['/user/dashboard']);
+    //                                 break;
+    //                             default:
+    //                                 alert("invalid user role");
+    //                         }
+    //                     });
+    //         });
+    // }
 }

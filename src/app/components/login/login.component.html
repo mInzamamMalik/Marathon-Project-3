@@ -1,3 +1,14 @@
 <p>
-  login works!
+    login:
 </p>
+
+<form action="" (submit)="login()">
+
+    <label for="">Email:</label> <br/>
+    <input (input)="data.email=$event.target.value" type="email" required /> <br/>
+    <label for="">Password:</label> <br/>
+    <input (input)="data.password=$event.target.value" type="password" required /> <br/>
+
+    <button type="submit">Login</button>
+    <p>don't have an account? <a routerLink="/signup" routerLinkActive="active">Create One </a></p>
+</form>
