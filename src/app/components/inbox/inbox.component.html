@@ -3,18 +3,19 @@
 </p>
 
 <form (onSubmit)="sendMessage()">
-    <textarea [(ngModel)]="input" name="a" placeholder="Message" required ></textarea>
+    <textarea [(ngModel)]="input" name="a" placeholder="Message" required></textarea>
     <br>
     <button (click)="sendMessage()">Send</button>
 </form>
 
+<input (change)="uploadImageToFirebase($event)" type="file" accept=" image/* " capture="camera">
+
+
 <br> Messages:
-<div>
-    <div *ngFor="let item of messages | async | reverse" class="message">
-        <div>
-            <p><b> {{ (item.from == resObject.$key )? resObject.name : "Me" }}</b></p>
-            <p> {{item.text}}</p>
-            {{item | json}}
-        </div>
+<div *ngFor="let item of messages | async | reverse" class="message">
+    <div>
+        <p><b> {{ (item.from == resObject.$key )? resObject.name : "Me" }}</b></p>
+        <p> {{item.text}}</p>
+        {{item | json}}
     </div>
 </div>

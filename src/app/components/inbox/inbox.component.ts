@@ -60,13 +60,15 @@ export class InboxComponent implements OnInit {
     sendMessage() {
         this.newMessage.text = this.input || null;
 
-        console.log("inbox/" + this.recipientUid + "/" + this.myUid);
-        console.log("inbox/" + this.myUid + "/" + this.recipientUid);
-
         this.fs.pushData("inbox/" + this.recipientUid + "/" + this.myUid, this.newMessage)
         this.fs.pushData("inbox/" + this.myUid + "/" + this.recipientUid, this.newMessage)
 
         this.input = "";
     }
-
+    
+    
+    uploadImageToFirebase(event) {
+        var filename = event.target.files[0];
+        this.fs.uploadImage(filename);        
+    };
 }
