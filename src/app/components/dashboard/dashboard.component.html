@@ -1,8 +1,6 @@
 <p>
-    dashboard:
+    Available Users List:
 </p>
-
-Available Users List:
 <div>
     <div *ngFor="let item of users | async" class="user" [routerLink]="['/inbox', { uid: item.$key}]" routerLinkActive="active">
         <p><b>Name:</b> {{item.name}}</p>
