@@ -3,7 +3,7 @@
 </p>
 
 <form (onSubmit)="sendMessage()">
-    <input [(ngModel)]="input" name="a" placeholder="Message" required />
+    <textarea [(ngModel)]="input" name="a" placeholder="Message" required ></textarea>
     <br>
     <button (click)="sendMessage()">Send</button>
 </form>
