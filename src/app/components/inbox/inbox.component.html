@@ -1,18 +1,20 @@
 <p>
-    inbox:
+    Conversation with {{(resObject)?.name }} - {{(resObject)?.email }}:
 </p>
 
-Messages:
+<form (onSubmit)="sendMessage()">
+    <input [(ngModel)]="input" name="a" placeholder="Message" required />
+    <br>
+    <button (click)="sendMessage()">Send</button>
+</form>
+
+<br> Messages:
 <div>
-    <div *ngFor="let item of messages | async" class="message">
-        <p><b>From:</b> {{item.from}}</p>
-        <p><b>Message:</b> {{item.text}}</p>        
-        {{item | json}}
+    <div *ngFor="let item of messages | async | reverse" class="message">
+        <div>
+            <p><b> {{ (item.from == resObject.$key )? resObject.name : "Me" }}</b></p>
+            <p> {{item.text}}</p>
+            {{item | json}}
+        </div>
     </div>
 </div>
-
-<!--<form (submit)="sendMessage()">-->
-    <input [(ngModel)]="input" name="a" [ngModelOptions]="{standalone: true}" placeholder="Message" required />    
-    <br> 
-    <button (click)="sendMessage()">Send</button>
-<!--</form>-->

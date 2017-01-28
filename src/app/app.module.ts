@@ -28,29 +28,30 @@ export const firebaseConfig = {
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    
+
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'inbox', component: InboxComponent },   
+    { path: 'inbox', component: InboxComponent },
 
     { path: '**', component: LoginComponent }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    SignupComponent,
-    DashboardComponent,
-    InboxComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot(appRoutes)
-  ],
-  providers: [FireService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        SignupComponent,
+        DashboardComponent,
+        InboxComponent,
+        ReversePipe
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        RouterModule.forRoot(appRoutes)
+    ],
+    providers: [FireService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

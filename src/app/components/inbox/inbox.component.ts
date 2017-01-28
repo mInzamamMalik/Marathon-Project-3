@@ -20,12 +20,20 @@ export class InboxComponent implements OnInit {
             .subscribe(auth => {
                 this.myUid = auth.uid
                 this.newMessage.from = auth.uid
+                this.fs.getData("users/" + auth.uid).subscribe(user => {
+                    this.myObject = user
+                    console.log("my data: ", user)
+                });
 
                 this.ActivatedRoute.params
                     .subscribe((params: any) => {
                         console.log("Router params: ", params);
                         this.recipientUid = params.uid;
                         this.newMessage.to = this.recipientUid;
+                        this.fs.getData("users/" + this.recipientUid).subscribe(user => {
+                            this.resObject = user;
+                            console.log("res data: ", user)
+                        });
 
                         console.log("getting inbox intem from: inbox/" + this.myUid + "/" + this.recipientUid);
 
@@ -36,6 +44,8 @@ export class InboxComponent implements OnInit {
     }
     myUid;
     recipientUid;
+    myObject;
+    resObject;
     messages;
     input;
 
@@ -47,7 +57,7 @@ export class InboxComponent implements OnInit {
     }
 
 
-    sendMessage() {        
+    sendMessage() {
         this.newMessage.text = this.input || null;
 
         console.log("inbox/" + this.recipientUid + "/" + this.myUid);
@@ -55,7 +65,7 @@ export class InboxComponent implements OnInit {
 
         this.fs.pushData("inbox/" + this.recipientUid + "/" + this.myUid, this.newMessage)
         this.fs.pushData("inbox/" + this.myUid + "/" + this.recipientUid, this.newMessage)
-        
+
         this.input = "";
     }
 
