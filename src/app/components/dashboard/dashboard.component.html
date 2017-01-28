@@ -1,5 +1,5 @@
 <p>
-    Available Items List:
+    Add Item:
 </p>
 
 <form (submit)="addItem()">
@@ -14,9 +14,14 @@
 </form>
 
 
+<p>
+    Available Items List:
+</p>
 <div>
-    <div *ngFor="let item of items | async" class="items">
-        <p><b>Name:</b> {{item.name}}</p>
-        <p><b>Email:</b> {{item.email}}</p>
+    <div *ngFor="let item of items | async" class="item">
+        <p><b> {{item.title}}</b></p>
+        <p><b>Price:</b> {{item.price}}</p>
+        <p><b>Detail:</b> {{item.detail}}</p>
+        <input [(ngModel)]="item.bid" placeholder="200" type="number"> <button (click)="bit(item)"> Bid </button>
     </div>
 </div>
