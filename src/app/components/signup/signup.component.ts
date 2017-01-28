@@ -20,30 +20,30 @@ export class SignupComponent implements OnInit {
         password: "",
         role: "user"
     }
-    // signup() {
-    //     console.log(this.data);
-    //     this.fs.doSignup(this.data.email, this.data.password)
-    //         .catch((error: any) => {
-    //             alert(error);
-    //             console.log(error);
-    //         })
-    //         .then(user => {
-    //             console.log("user logged in: ", user);
-    //             if (user != undefined) {
-    //                 console.log("user created");
-    //                 this.fs.setData("users/" + user.uid, {
-    //                     name: this.data.name,
-    //                     email: user.auth.email,
-    //                     role: this.data.role
-    //                 })
-    //                     .catch(error => {
-    //                         console.log("Error is: ", error);
-    //                     })
-    //                     .then(data => {
-    //                         this.router.navigate(['/login']);
-    //                     });
-    //             }
-    //         })
-    // }
+    signup() {
+        console.log(this.data);
+        this.fs.doSignup(this.data.email, this.data.password)
+            .catch((error: any) => {
+                alert(error);
+                console.log(error);
+            })
+            .then(user => {
+                console.log("user logged in: ", user);
+                if (user != undefined) {
+                    console.log("user created");
+                    this.fs.setData("users/" + user.uid, {
+                        name: this.data.name,
+                        email: user.auth.email,
+                        role: this.data.role
+                    })
+                        .catch(error => {
+                            console.log("Error is: ", error);
+                        })
+                        .then(data => {
+                            this.router.navigate(['/login']);
+                        });
+                }
+            })
+    }
 
 }
