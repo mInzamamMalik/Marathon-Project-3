@@ -12,8 +12,18 @@ export class DashboardComponent implements OnInit {
     constructor(private fs: FireService, private router: Router) { }
 
     ngOnInit() {
-        this.users = this.fs.getList('users');
+        this.users = this.fs.getList('items');
     }
     users;
+
+    item = {
+        title: "",
+        detail: "",
+        price: ""
+    }
+    addItem() {
+        console.log("dtg");
+        this.fs.pushData("items/", this.item);
+    }
 
 }

@@ -17,11 +17,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyBzr-WAxz6uWy_2Dam52P2HXVzH6JQEjHM",
-    authDomain: "chat-app-eb5b6.firebaseapp.com",
-    databaseURL: "https://chat-app-eb5b6.firebaseio.com",
-    storageBucket: "chat-app-eb5b6.appspot.com",
-    messagingSenderId: "758779658895"
+    apiKey: "AIzaSyBRS53Y6Wtm8YQX8ZQIdBIeQVhznsMQ-2c",
+    authDomain: "auction-169e0.firebaseapp.com",
+    databaseURL: "https://auction-169e0.firebaseio.com",
+    storageBucket: "auction-169e0.appspot.com",
+    messagingSenderId: "929213999268"
 };
 
 

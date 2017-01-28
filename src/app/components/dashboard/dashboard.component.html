@@ -1,8 +1,21 @@
 <p>
-    Available Users List:
+    Available Items List:
 </p>
+
+<form (submit)="addItem()">
+
+    <input [(ngModel)]="item.title" type="text" name="a" placeholder="Title" required/>
+    <br>
+    <input [(ngModel)]="item.price" type="number" name="a" placeholder="Price" required/>
+    <br>
+    <textarea [(ngModel)]="item.detail" name="a" placeholder="Detail" cols="30" rows="10" required></textarea>
+    <br>
+    <button type="submit">Add Item</button>
+</form>
+
+
 <div>
-    <div *ngFor="let item of users | async" class="user" [routerLink]="['/inbox', { uid: item.$key}]" routerLinkActive="active">
+    <div *ngFor="let item of items | async" class="items">
         <p><b>Name:</b> {{item.name}}</p>
         <p><b>Email:</b> {{item.email}}</p>
     </div>
